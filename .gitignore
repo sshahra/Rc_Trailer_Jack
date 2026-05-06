@@ -23,6 +23,11 @@
 # misc
 .DS_Store
 *.pem
+*screenshot*.png
+
+# large local source videos kept outside GitHub's file-size limit
+Content/Timeline 1.mov
+Content/Video Project draft (1).mp4
 
 # debug
 npm-debug.log*

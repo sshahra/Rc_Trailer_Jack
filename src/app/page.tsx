@@ -393,7 +393,7 @@ function ArrowStep({ label }: { label: string }) {
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#08111f] text-[#191714]">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07111f]/88 text-white shadow-lg shadow-black/20 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#07111f]/88 text-white shadow-lg shadow-black/20 backdrop-blur-xl">
         <nav
           className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-5 sm:px-8 lg:px-10"
           aria-label="Section navigation"
@@ -405,7 +405,10 @@ export default function Home() {
             RC Trailer Jack
           </a>
           <div className="h-5 w-px shrink-0 bg-white/15" />
-          <div className="no-scrollbar flex flex-1 items-center gap-1 overflow-x-auto">
+          <div
+            className="no-scrollbar flex flex-1 items-center gap-1 overflow-x-auto"
+            style={{ scrollbarWidth: "none" }}
+          >
             {navLinks.map((link) => (
               <a
                 key={link.href}
