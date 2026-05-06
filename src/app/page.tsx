@@ -405,7 +405,7 @@ export default function Home() {
             RC Trailer Jack
           </a>
           <div className="h-5 w-px shrink-0 bg-white/15" />
-          <div className="flex flex-1 items-center gap-1 overflow-x-auto">
+          <div className="no-scrollbar flex flex-1 items-center gap-1 overflow-x-auto">
             {navLinks.map((link) => (
               <a
                 key={link.href}
