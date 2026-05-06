@@ -106,6 +106,19 @@ const signalTerms = [
   "Tank-drive steering",
 ];
 
+const navLinks = [
+  { href: "#overview", label: "Overview" },
+  { href: "#demo", label: "Demo" },
+  { href: "#architecture", label: "Architecture" },
+  { href: "#project-poster", label: "Poster" },
+  { href: "#software", label: "Software" },
+  { href: "#hardware", label: "Hardware" },
+  { href: "#testing", label: "Testing" },
+  { href: "#team", label: "Team" },
+  { href: "#future", label: "Future" },
+  { href: "#documents", label: "Docs" },
+];
+
 const softwareFeatures: ComponentItem[] = [
   {
     name: "Android Controller",
@@ -380,7 +393,36 @@ function ArrowStep({ label }: { label: string }) {
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#08111f] text-[#191714]">
-      <section className="relative flex min-h-[88svh] items-end overflow-hidden bg-[#08111f]">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07111f]/88 text-white shadow-lg shadow-black/20 backdrop-blur-xl">
+        <nav
+          className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-5 sm:px-8 lg:px-10"
+          aria-label="Section navigation"
+        >
+          <a
+            href="#home"
+            className="shrink-0 text-sm font-semibold tracking-wide text-[#f6c453]"
+          >
+            RC Trailer Jack
+          </a>
+          <div className="h-5 w-px shrink-0 bg-white/15" />
+          <div className="flex flex-1 items-center gap-1 overflow-x-auto">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-slate-300 transition hover:bg-cyan-300/10 hover:text-cyan-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f6c453]"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </header>
+
+      <section
+        id="home"
+        className="relative flex min-h-[88svh] scroll-mt-14 items-end overflow-hidden bg-[#08111f]"
+      >
         <Image
           src={`${assetBase}/team-photo.jpg`}
           alt="RC Trailer Jack senior design team standing with the prototype and poster."
@@ -427,14 +469,19 @@ export default function Home() {
                 Full Project Video
               </a>
             </div>
-            <div className="mt-7 flex max-w-2xl flex-wrap gap-2">
-              {["BLE linked", "Camera live", "Watchdog armed"].map((item) => (
+            <div className="mt-7 flex max-w-[21rem] flex-wrap gap-2 sm:max-w-2xl">
+              {[
+                { short: "BLE", full: "BLE linked" },
+                { short: "Camera", full: "Camera live" },
+                { short: "Watchdog", full: "Watchdog armed" },
+              ].map((item) => (
                 <span
-                  key={item}
+                  key={item.full}
                   className="inline-flex items-center gap-2 rounded-full border border-cyan-200/25 bg-cyan-200/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-100 backdrop-blur"
                 >
                   <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)]" />
-                  {item}
+                  <span className="sm:hidden">{item.short}</span>
+                  <span className="hidden sm:inline">{item.full}</span>
                 </span>
               ))}
             </div>
@@ -473,7 +520,10 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="relative overflow-hidden border-b border-cyan-300/10 bg-[linear-gradient(135deg,#08111f,#10243d,#23153d)] px-5 py-16 text-white animated-gradient sm:px-8 lg:px-10">
+      <section
+        id="overview"
+        className="relative scroll-mt-14 overflow-hidden border-b border-cyan-300/10 bg-[linear-gradient(135deg,#08111f,#10243d,#23153d)] px-5 py-16 text-white animated-gradient sm:px-8 lg:px-10"
+      >
         <div className="absolute inset-0 electric-grid opacity-35" />
         <div className="relative mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
           <div>
@@ -523,7 +573,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="demo" className="relative overflow-hidden px-5 py-20 sm:px-8 lg:px-10">
+      <section id="demo" className="relative scroll-mt-14 overflow-hidden px-5 py-20 sm:px-8 lg:px-10">
         <div className="absolute inset-0 electric-grid opacity-25" />
         <div className="relative mx-auto max-w-7xl">
           <SectionHeading eyebrow="Demo" title="Watch the prototype move" inverse>
@@ -622,7 +672,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#08111f,#0f2c35,#201334)] px-5 py-20 animated-gradient sm:px-8 lg:px-10">
+      <section
+        id="architecture"
+        className="relative scroll-mt-14 overflow-hidden bg-[linear-gradient(135deg,#08111f,#0f2c35,#201334)] px-5 py-20 animated-gradient sm:px-8 lg:px-10"
+      >
         <div className="absolute inset-0 electric-grid opacity-25" />
         <div className="relative mx-auto max-w-7xl">
           <SectionHeading
@@ -730,7 +783,7 @@ export default function Home() {
 
       <section
         id="project-poster"
-        className="relative overflow-hidden bg-[#07111f] px-5 py-20 text-white sm:px-8 lg:px-10"
+        className="relative scroll-mt-14 overflow-hidden bg-[#07111f] px-5 py-20 text-white sm:px-8 lg:px-10"
       >
         <div className="absolute inset-0 electric-grid opacity-30" />
         <div className="relative mx-auto max-w-7xl">
@@ -783,7 +836,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-5 py-20 sm:px-8 lg:px-10">
+      <section
+        id="software"
+        className="relative scroll-mt-14 overflow-hidden px-5 py-20 sm:px-8 lg:px-10"
+      >
         <div className="absolute inset-0 electric-grid opacity-20" />
         <div className="relative mx-auto max-w-7xl">
           <SectionHeading
@@ -829,7 +885,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
+      <section
+        id="hardware"
+        className="scroll-mt-14 bg-white px-5 py-20 sm:px-8 lg:px-10"
+      >
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Hardware"
@@ -863,7 +922,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#24211d] px-5 py-20 text-white sm:px-8 lg:px-10">
+      <section
+        id="testing"
+        className="scroll-mt-14 bg-[#24211d] px-5 py-20 text-white sm:px-8 lg:px-10"
+      >
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Testing"
@@ -928,7 +990,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#08111f,#0e1f37,#1f1732)] px-5 py-20 text-white animated-gradient sm:px-8 lg:px-10">
+      <section
+        id="team"
+        className="relative scroll-mt-14 overflow-hidden bg-[linear-gradient(135deg,#08111f,#0e1f37,#1f1732)] px-5 py-20 text-white animated-gradient sm:px-8 lg:px-10"
+      >
         <div className="absolute inset-0 electric-grid opacity-25" />
         <div className="relative mx-auto max-w-7xl">
           <SectionHeading
@@ -978,7 +1043,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#0a1322] px-5 py-20 text-white sm:px-8 lg:px-10">
+      <section
+        id="future"
+        className="relative scroll-mt-14 overflow-hidden bg-[#0a1322] px-5 py-20 text-white sm:px-8 lg:px-10"
+      >
         <div className="absolute inset-0 electric-grid opacity-20" />
         <div className="relative mx-auto max-w-7xl">
           <SectionHeading eyebrow="Future Work" title="Where the prototype goes next" inverse>
@@ -1004,7 +1072,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f8f6f1] px-5 py-20 sm:px-8 lg:px-10">
+      <section
+        id="documents"
+        className="scroll-mt-14 bg-[#f8f6f1] px-5 py-20 sm:px-8 lg:px-10"
+      >
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow="Documents" title="Report, slides, and source material">
             Download the original senior design documents and decks used to
