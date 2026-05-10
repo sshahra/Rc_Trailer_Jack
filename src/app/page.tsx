@@ -28,6 +28,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { CommandConsole } from "@/components/CommandConsole";
+import { TrailerJackModel } from "@/components/TrailerJackModel";
 
 const assetBase = "/rc-trailer-jack";
 const fullVideoUrl = "https://youtu.be/kuPE9fip_WY";
@@ -424,23 +425,13 @@ export default function Home() {
 
       <section
         id="home"
-        className="relative flex min-h-[88svh] scroll-mt-14 items-end overflow-hidden bg-[#08111f]"
+        className="relative scroll-mt-14 overflow-hidden bg-[#08111f] px-5 pb-10 pt-24 text-white sm:px-8 lg:px-10"
       >
-        <Image
-          src={`${assetBase}/team-photo.jpg`}
-          alt="RC Trailer Jack senior design team standing with the prototype and poster."
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/[0.35]" />
-        <div className="absolute inset-0 electric-grid opacity-45" />
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/[0.45] to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-cyan-400/15 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(34,211,238,0.22),transparent_32%),linear-gradient(135deg,#08111f_0%,#10243d_50%,#161022_100%)]" />
+        <div className="pointer-events-none absolute inset-0 electric-grid opacity-35" />
 
-        <div className="relative mx-auto w-full max-w-7xl px-5 pb-10 pt-28 sm:px-8 lg:px-10">
-          <div className="max-w-4xl text-white">
+        <div className="relative mx-auto grid min-h-[calc(88svh-3.5rem)] w-full max-w-7xl content-end gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:pt-8">
+          <div className="max-w-3xl">
             <p className="flex max-w-full flex-wrap items-center gap-2 text-sm font-semibold uppercase text-[#f6c453]">
               <Trophy className="h-4 w-4" aria-hidden="true" />
               <span className="sm:hidden">UT EECS · KEEN Award</span>
@@ -490,7 +481,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="relative h-[360px] overflow-hidden rounded-lg border border-cyan-200/25 bg-[radial-gradient(circle_at_55%_28%,rgba(147,197,253,0.2),transparent_32%),linear-gradient(145deg,rgba(10,23,40,0.98),rgba(18,33,51,0.96)_50%,rgba(8,17,31,0.98))] shadow-2xl shadow-cyan-950/45 sm:h-[460px] lg:h-[590px]">
+            <TrailerJackModel src={`${assetBase}/trailer-jack.glb`} />
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}
@@ -590,7 +585,7 @@ export default function Home() {
                 className="aspect-video w-full object-cover"
                 controls
                 preload="metadata"
-                poster={`${assetBase}/prototype-lab.jpg`}
+                // poster={`${assetBase}/prototype-lab.jpg`}
               >
                 <source src={`${assetBase}/demo-video.mp4`} type="video/mp4" />
               </video>
